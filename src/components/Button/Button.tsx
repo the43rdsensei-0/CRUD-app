@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 type ButtonType = {
   children: string;
   icon?: ReactElement | undefined;
-  onClick: () => void;
+  onClick?: () => void;
   type: string;
 };
 

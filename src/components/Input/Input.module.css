@@ -1,9 +1,7 @@
 .input_wrapper  {
-  padding: 10px;
 
   display: flex;
   flex-direction: column;
-  width: max-content;
 }
 
 .label {
@@ -15,7 +13,6 @@
 
 .input {
   all: unset;
-  width: 300px;
   padding: 10px 10px;
   border-radius: 6px;
   border: 1px solid grey;

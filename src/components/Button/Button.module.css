@@ -43,5 +43,10 @@
 }
 
 .edit {
-  color: rgb(26, 26, 226);
+  background-color: rgb(26, 26, 226);
+}
+
+.submit {
+  background-color: blue;
+  /* width: 100%; */
 }
