@@ -11,8 +11,8 @@ type ButtonType = {
 function Button({ children, icon, onClick, type }: ButtonType) {
   return (
     <button onClick={onClick} className={`${styles.btn} ${styles[type]}`}>
-      <span>{children}</span>
-      {icon && <span>{icon}</span>}
+      <span className={styles.button_text}>{children}</span>
+      {icon && <span className={styles.icon}>{icon}</span>}
     </button>
   );
 }
