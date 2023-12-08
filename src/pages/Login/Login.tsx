@@ -1,41 +1,17 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../components/Input/Input";
 import styles from "./Login.module.css";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 
-const initialState = {
-  user: null,
-  isAuthenticated: false,
-};
-
-const FAKE_USER = {
-  name: "Johnny",
-  email: "johnny@gmail.com",
-  username: "johnnyohms",
-  password: "jOhms",
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "login":
-      return { ...state, user: action.payload, isAuthenticated: true };
-    case "logout":
-      return { ...state, user: null, isAuthenticated: false };
-    default:
-      throw new Error("unknown action");
-  }
-}
-
-function Login() {
-  const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState);
+function Login({ user, isAuthenticated, dispatch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   function login(username, password) {
-    if (username === FAKE_USER.username && password === FAKE_USER.password) dispatch({ type: "login", payload: FAKE_USER });
+    if (username === user.username && password === user.password) dispatch({ type: "login", payload: user });
   }
 
   // function logout() {
