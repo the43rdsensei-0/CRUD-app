@@ -10,12 +10,12 @@ function Modal({ close, title }: { close: () => void; title: string }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    console.log(name, email, phone);
   }
 
   return (
     <div className={styles.modal_container}>
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} onClick={close}></div>
       <div className={styles.modal}>
         <div className={styles.modal_header}>
           <h3>{title}</h3>
