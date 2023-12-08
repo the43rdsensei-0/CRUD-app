@@ -1,0 +1,19 @@
+.login_container {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_form {
+  border: 1px solid grey;
+  width: 320px;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.btn_login {
+  margin-top: 2em;
+}
