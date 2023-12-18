@@ -3,7 +3,8 @@ import "./App.css";
 import Login from "./pages/Login/Login";
 import AppLayout from "./pages/AppLayout/AppLayout";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
+import Signup from "./pages/Signup/Signup";
 
 const initialState = {
   user: null,
@@ -35,6 +36,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index path={"/"} element={<Login user={FAKE_USER} isAuthenticated={isAuthenticated} dispatch={dispatch} />} />
+        <Route index path={"signup"} element={<Signup />} />
         <Route
           path={"app"}
           element={

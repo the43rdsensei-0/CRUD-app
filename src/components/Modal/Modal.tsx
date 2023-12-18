@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Input from "../Input/Input";
 import styles from "./Modal.module.css";
 import Button from "../Button/Button";
 
@@ -25,9 +24,9 @@ function Modal({ close, title }: { close: () => void; title: string }) {
         </div>
 
         <form action="" onSubmit={(e) => handleSubmit(e)}>
-          <Input label="Name" action={setName} value={name} />
-          <Input label="email" action={setEmail} value={email} />
-          <Input label="phone" action={setPhone} value={phone} />
+          <input value={name} />
+          <input value={email} />
+          <input type="text" value={phone} />
 
           <div className={styles.btn_wrapper}>
             <Button type="submit">Submit</Button>

@@ -1,6 +1,6 @@
 .btn {
-  all: unset;
   border-radius: 8px;
+  border: none;
   color: #FFF;
   padding: 8px 16px;
   text-transform: uppercase;
@@ -21,8 +21,8 @@
 }
 
 .btn_text {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 600;
   line-height: 130%;
 }
 
@@ -32,6 +32,10 @@
 
   display: flex;
   align-items: center;
+}
+
+.primary {
+  background-color: rgb(2, 152, 2);
 }
 
 .add {
@@ -48,5 +52,4 @@
 
 .submit {
   background-color: blue;
-  /* width: 100%; */
 }

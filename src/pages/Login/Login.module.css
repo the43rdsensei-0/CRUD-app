@@ -1,19 +1,45 @@
-.login_container {
-  height: 100vh;
-  width: 100%;
+.login {
+  padding: 2.5rem;
+  background-color: var(--color-dark--1);
+  min-height: 100vh;
+}
 
+.form_container {
+  width: max-content;
+  height: max-content;
+  margin: 8em auto;
+}
+
+.form {
+  background-color: var(--color-dark--2);
+  border-radius: 7px;
+  padding: 2rem 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  /* Different from other form */
+  width: 48rem;
+  margin: 2rem auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.redirect {
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.login_form {
-  border: 1px solid grey;
-  width: 320px;
-  padding: 1em;
-  border-radius: 8px;
+a {
+  color: var(--color-brand--2);
 }
 
-.btn_login {
-  margin-top: 2em;
+a:hover {
+  text-decoration: none;
 }
