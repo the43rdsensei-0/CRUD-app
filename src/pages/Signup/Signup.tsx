@@ -4,13 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import styles from "./Signup.module.css";
 import Loader from "../../components/loader/Loader";
-
-function Options(methodType: string, payload: string) {
-  return {
-    method: methodType,
-    body: payload,
-  };
-}
+import { toast } from "react-toastify";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -21,40 +15,63 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  const userData = JSON.stringify({
-    email,
-    username,
-    password,
-  });
-
   useEffect(() => {
-    if (!username || !password) return;
+    if (!username || !password) return; // guard clause to do nothing when there's no username or password inputted
 
+    // if form is filled and cta btn clicked, display loading page, and psot form data to DB
     if (formSubmitted) {
       setIsLoading(true);
 
-      fetch("https://crud-api-s9wj.onrender.com/signup", Options("POST", userData))
+      fetch("https://crud-api-s9wj.onrender.com/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, username, password }),
+      })
         .then((response) => {
-          if (!response.ok) throw new Error("error fetching data");
+          if (!response.ok) throw new Error("error creating user"); //if fetch fails return the string in error
 
           return response.json();
         })
         .then((data) => {
-          console.log(data);
-
-          navigate("/");
+          return data;
+          navigate("/"); // navigate to the login page for authentication and access to the app
         })
         .catch((error) => console.log("error", error))
-        .finally(() => setIsLoading(false));
+        .finally(() => setIsLoading(false)); // disable loading screen
     }
-  }, [password, username, email, userData, navigate, formSubmitted]);
+  }, [password, username, email, navigate, formSubmitted]);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (username && password) {
+    // if inputs are validated then formsubmitted becomes true
+    if (validate()) {
       setFormSubmitted(true);
     }
+  }
+
+  function validate() {
+    let result = true;
+
+    if (username === "" || username === null) {
+      toast.warn("please enter Username");
+      result = false;
+    }
+
+    if (email === "" || email === null) {
+      result = false;
+      toast.warning("Please enter Password");
+    }
+
+    if (password === "" || password === null) {
+      result = false;
+      toast.warning("Please enter Password");
+    }
+
+    // return true or false based on evalaution of conditions
+    return result;
   }
 
   return (
