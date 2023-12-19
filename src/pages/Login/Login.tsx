@@ -36,7 +36,7 @@ function Login() {
         })
         .then((data) => {
           // store userid in localstorage as long as user is logged for easy retrieval and use
-          localStorage.setItem("user", JSON.stringify(data.userid));
+          localStorage.setItem("userid", JSON.stringify(data.userid));
 
           //dispatch method triggers a login passing the response received and storing it in the user (in context) then navigate to app (protected)
           dispatch({ type: "login", payload: data });
