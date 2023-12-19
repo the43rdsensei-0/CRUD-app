@@ -17,6 +17,7 @@ function AppLayout() {
   ];
 
   const navigate = useNavigate();
+  const { user } = useAuth()!;
 
   const [showModal, setShowModal] = useState(false);
   const { dispatch } = useAuth()!;
@@ -43,9 +44,14 @@ function AppLayout() {
             Add new (+)
           </Button>
 
-          <Button type="primary" onClick={handleLogout}>
-            Logout
-          </Button>
+          <div className={styles.user_profile}>
+            <div className={styles.user}>
+              <p>Welcome, {user?.username.toUpperCase()}</p>
+            </div>
+            <Button type="primary" onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
         </div>
         <TableContainer>
           <Table>
