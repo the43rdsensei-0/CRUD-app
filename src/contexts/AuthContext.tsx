@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
 
 type AuthState = {
-  user: object | null;
+  user: object | null | undefined;
   isAuthenticated: boolean | undefined;
-  dispatch: React.Dispatch<{ type: string; payload: object }>;
+  dispatch: React.Dispatch<{ type: string; payload?: object }>;
 };
 
 const AuthContext = createContext<AuthState | null>(null);
@@ -13,7 +13,7 @@ const initialState = {
   isAuthenticated: false,
 };
 
-function reducer(state: object, action: { type: string; payload: object }) {
+function reducer(state: object, action: { type: string; payload?: object }) {
   switch (action.type) {
     case "login":
       return {

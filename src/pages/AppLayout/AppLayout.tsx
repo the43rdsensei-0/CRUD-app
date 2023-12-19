@@ -3,6 +3,8 @@ import Button from "../../components/Button/Button";
 import styles from "./AppLayout.module.css";
 import { TableContainer, Table, TableBody, TableCell, TableHead, Paper, TableRow } from "@mui/material";
 import Modal from "../../components/Modal/Modal";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function AppLayout() {
   const columns = [
@@ -14,7 +16,16 @@ function AppLayout() {
     { id: "action", name: "Action" },
   ];
 
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
+  const { dispatch } = useAuth()!;
+
+  function handleLogout() {
+    dispatch({ type: "logout" });
+    localStorage.clear();
+    navigate("/");
+  }
 
   function handleOpenModal() {
     setShowModal(true);
@@ -27,9 +38,13 @@ function AppLayout() {
   return (
     <div className={styles.app_layout}>
       <Paper sx={{ margin: "1%" }}>
-        <div className={styles.add_btn}>
+        <div className={styles.cta_btn}>
           <Button type="add" onClick={handleOpenModal}>
             Add new (+)
+          </Button>
+
+          <Button type="primary" onClick={handleLogout}>
+            Logout
           </Button>
         </div>
         <TableContainer>

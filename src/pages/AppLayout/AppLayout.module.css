@@ -1,5 +1,9 @@
 
 
-.add_btn {
+.cta_btn {
   padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
