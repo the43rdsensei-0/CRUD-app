@@ -6,11 +6,12 @@ type ButtonType = {
   icon?: ReactElement | undefined;
   onClick?: () => void;
   type: string;
+  disabled?: boolean;
 };
 
-function Button({ children, icon, onClick, type }: ButtonType) {
+function Button({ children, icon, onClick, type, disabled }: ButtonType) {
   return (
-    <button onClick={onClick} className={`${styles.btn} ${styles[type]}`}>
+    <button onClick={onClick} disabled={disabled} className={`${styles.btn} ${styles[type]}`}>
       <span className={styles.button_text}>{children}</span>
       {icon && <span className={styles.icon}>{icon}</span>}
     </button>
