@@ -20,6 +20,11 @@
   transform: scale(.97);
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn_text {
   font-size: 2rem;
   font-weight: 600;

@@ -13,6 +13,7 @@ function AppLayout() {
     { id: "email", name: "Email" },
     { id: "phone", name: "Phone" },
     { id: "address", name: "Address" },
+    { id: "datecreated", name: "DateCreated" },
     { id: "action", name: "Action" },
   ];
 
@@ -69,7 +70,7 @@ function AppLayout() {
         </TableContainer>
       </Paper>
 
-      {showModal && <Modal close={handleCLoseModal} title="Create new data" />}
+      {showModal && <Modal close={handleCLoseModal} title="Create new data" methodType={"POST"} />}
     </div>
   );
 }
