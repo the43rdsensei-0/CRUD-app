@@ -7,7 +7,7 @@ function Modal({ close, title }: { close: () => void; title: string }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(name, email, phone);
   }
@@ -24,9 +24,20 @@ function Modal({ close, title }: { close: () => void; title: string }) {
         </div>
 
         <form action="" onSubmit={(e) => handleSubmit(e)}>
-          <input value={name} />
-          <input value={email} />
-          <input type="text" value={phone} />
+          <label htmlFor="name">
+            Name
+            <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+
+          <label htmlFor="email">
+            Email
+            <input id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </label>
+
+          <label htmlFor="phone">
+            Phone
+            <input id="phone" type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+          </label>
 
           <div className={styles.btn_wrapper}>
             <Button type="submit">Submit</Button>

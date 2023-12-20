@@ -69,7 +69,7 @@ function AppLayout() {
         </TableContainer>
       </Paper>
 
-      {showModal && <Modal close={handleCLoseModal} title="Create something" />}
+      {showModal && <Modal close={handleCLoseModal} title="Create new data" />}
     </div>
   );
 }

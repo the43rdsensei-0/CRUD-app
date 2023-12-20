@@ -20,7 +20,7 @@
 }
 
 .modal {
-  background-color: #fff;
+  background-color: var(--color-dark--2);
   position: relative;
   width: 380px;
   z-index: 5;
@@ -38,10 +38,10 @@
 
 .close {
   all: unset;
-  border: 1px solid grey;
   border-radius: 3px;
-  padding: 0px 5px;
-  font-size: 1.2rem;
+  height: 30px;
+  width: 30px;
+  font-size: 2.5rem;
   cursor: pointer;
 
   display: flex;
@@ -51,4 +51,20 @@
 
 .btn_wrapper {
   margin-top: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+label {
+  font-size: 1.4rem;
+  font-weight: 500;
 }

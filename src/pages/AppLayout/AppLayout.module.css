@@ -1,5 +1,11 @@
+.app_layout {
+  background: var(--color-dark--1);
+  height: 100vh;
+  padding: 2em;
+}
+
 .cta_btn {
-  padding: 10px;
+  padding: 2em 1.5em;
 
   display: flex;
   justify-content: space-between;
@@ -21,4 +27,9 @@
   font-size: 16px;
   font-weight: 400;
   color: #000;
+}
+
+th {
+  font-size: 1.3rem !important;
+  text-align: center !important;
 }
