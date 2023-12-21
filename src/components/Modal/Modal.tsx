@@ -11,8 +11,6 @@ function Modal({ close, title, methodType }: { close: () => void; title: string;
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(ID);
-
   const data = useMemo(
     () => ({
       userid: ID,
@@ -23,8 +21,6 @@ function Modal({ close, title, methodType }: { close: () => void; title: string;
     }),
     [name, email, phone]
   );
-
-  console.log(data);
 
   useEffect(
     function () {

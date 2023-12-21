@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import styles from "./AppLayout.module.css";
 import { TableContainer, Table, TableBody, TableCell, TableHead, Paper, TableRow } from "@mui/material";
 import Modal from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+
+const userId = localStorage.getItem("userid");
 
 function AppLayout() {
   const columns = [
@@ -22,6 +24,23 @@ function AppLayout() {
 
   const [showModal, setShowModal] = useState(false);
   const { dispatch } = useAuth()!;
+
+  useEffect(function () {
+    // fetching the data created by user in this hook from this endpoint https://crud-api-s9wj.onrender.com/getinfo/{userId} as the page loads
+
+    fetch(`https://crud-api-s9wj.onrender.com/getinfo/${userId}`)
+      .then((response) => {
+        if (!response.ok) throw new Error("error fetching data");
+
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
 
   function handleLogout() {
     dispatch({ type: "logout" });
