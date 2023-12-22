@@ -6,7 +6,9 @@ import Modal from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const userId = localStorage.getItem("userid");
+const userId = JSON.parse(localStorage.getItem("userid"));
+
+console.log(userId);
 
 function AppLayout() {
   const columns = [
@@ -28,7 +30,9 @@ function AppLayout() {
   useEffect(function () {
     // fetching the data created by user in this hook from this endpoint https://crud-api-s9wj.onrender.com/getinfo/{userId} as the page loads
 
-    fetch(`https://crud-api-s9wj.onrender.com/getinfo/${userId}`)
+    if (userId === null || userId === undefined) return;
+
+    fetch(`https://crud-api-s9wj.onrender.com/getinfo/${userId}/`)
       .then((response) => {
         if (!response.ok) throw new Error("error fetching data");
 
