@@ -6,9 +6,9 @@ import Modal from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const userId = JSON.parse(localStorage.getItem("userid")!);
+const { email, userid, username }: { email: string; userid: string; username: string } = JSON.parse(localStorage.getItem("user")!);
 
-console.log(userId);
+console.log(email);
 
 function AppLayout() {
   const columns = [
@@ -27,12 +27,14 @@ function AppLayout() {
   const [showModal, setShowModal] = useState(false);
   const { dispatch } = useAuth()!;
 
+  console.log(user);
+
   useEffect(function () {
     // fetching the data created by user in this hook from this endpoint https://crud-api-s9wj.onrender.com/getinfo/{userId} as the page loads
 
-    if (userId === null || userId === undefined) return;
+    if (userid === null || userid === undefined) return;
 
-    fetch(`https://crud-api-s9wj.onrender.com/getinfo/${userId}/`)
+    fetch(`https://crud-api-s9wj.onrender.com/getinfo/${userid}/`)
       .then((response) => {
         if (!response.ok) throw new Error("error fetching data");
 
@@ -70,7 +72,7 @@ function AppLayout() {
 
           <div className={styles.user_profile}>
             <div className={styles.user}>
-              <p>Welcome, {user?.username.toUpperCase()}</p>
+              <p>Welcome, {username.toUpperCase()}</p>
             </div>
             <Button type="primary" onClick={handleLogout}>
               Logout

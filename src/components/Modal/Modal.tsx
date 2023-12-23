@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./Modal.module.css";
 import Button from "../Button/Button";
 
-const ID = JSON.parse(localStorage.getItem("userid")!);
+const { userid }: { userid: string } = JSON.parse(localStorage.getItem("user")!);
 
 function Modal({ close, title, methodType }: { close: () => void; title: string; methodType: string }) {
   const [name, setName] = useState("");
@@ -14,7 +14,7 @@ function Modal({ close, title, methodType }: { close: () => void; title: string;
 
   const data = useMemo(
     () => ({
-      userid: ID,
+      userid,
       name,
       email,
       phone: Number(phone),
