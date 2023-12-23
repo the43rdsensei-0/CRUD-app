@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import styles from "./Modal.module.css";
 import Button from "../Button/Button";
 
-const ID = localStorage.getItem("userid");
+const ID = JSON.parse(localStorage.getItem("userid")!);
 
 function Modal({ close, title, methodType }: { close: () => void; title: string; methodType: string }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,11 +17,14 @@ function Modal({ close, title, methodType }: { close: () => void; title: string;
       userid: ID,
       name,
       email,
-      phone,
-      dateCreated: new Date(),
+      phone: Number(phone),
+      address,
+      dateCreated: String(new Date()),
     }),
-    [name, email, phone]
+    [name, email, phone, address]
   );
+
+  console.log(data);
 
   useEffect(
     function () {
@@ -96,6 +100,11 @@ function Modal({ close, title, methodType }: { close: () => void; title: string;
           <label htmlFor="phone">
             Phone
             <input id="phone" type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+          </label>
+
+          <label htmlFor="address">
+            Address
+            <input id="address" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
           </label>
 
           <div className={styles.btn_wrapper}>

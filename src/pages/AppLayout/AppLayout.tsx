@@ -6,7 +6,7 @@ import Modal from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const userId = JSON.parse(localStorage.getItem("userid"));
+const userId = JSON.parse(localStorage.getItem("userid")!);
 
 console.log(userId);
 
