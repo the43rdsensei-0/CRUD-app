@@ -35,7 +35,7 @@ function Signup() {
           return response.json();
         })
         .then((data) => {
-          return data;
+          console.log(data);
           navigate("/"); // navigate to the login page for authentication and access to the app
         })
         .catch((error) => console.log("error", error))
