@@ -8,6 +8,39 @@ import { useNavigate } from "react-router-dom";
 
 const { email, userid, username }: { email: string; userid: string; username: string } = JSON.parse(localStorage.getItem("user")!);
 
+// creating fake data to populate table
+
+const userDatas = [
+  {
+    name: "test1",
+    email: "test1@gmail.com",
+    phone: "08121071207",
+    address: "west street",
+    dateCreated: "nil",
+  },
+  {
+    name: "test2",
+    email: "test2@gmail.com",
+    phone: "08121071207",
+    address: "west street",
+    dateCreated: "nil",
+  },
+  {
+    name: "test3",
+    email: "test3@gmail.com",
+    phone: "08121071207",
+    address: "west street",
+    dateCreated: "nil",
+  },
+  {
+    name: "test4",
+    email: "test4@gmail.com",
+    phone: "08121071207",
+    address: "west street",
+    dateCreated: "nil",
+  },
+];
+
 console.log(email);
 
 function AppLayout() {

@@ -41,7 +41,12 @@ function reducer(state: object, action: { type: string; payload?: object }) {
 }
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState);
+  const storedUser = localStorage.getItem("user"); // 'user' is the key for the user data in local storage
+  const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, {
+    ...initialState,
+    user: storedUser ? JSON.parse(storedUser) : null, // Conditionally update the user object
+    isAuthenticated: !!storedUser, // Conditionally update the isAuthenticated flag
+  });
 
   return <AuthContext.Provider value={{ user, isAuthenticated, dispatch }}>{children}</AuthContext.Provider>;
 }
