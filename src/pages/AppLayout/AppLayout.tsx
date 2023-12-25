@@ -41,7 +41,7 @@ const userDatas = [
   },
 ];
 
-console.log(email);
+console.log(userDatas);
 
 function AppLayout() {
   const columns = [
